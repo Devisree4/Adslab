@@ -155,6 +155,20 @@ void traverselist(struct Node* head)
   printf("NULL\n");
 }
 
+void search(struct Node* head, int key) {
+    struct Node* temp = head;
+    int pos = 1;
+    while (temp != NULL) {
+        if (temp->data == key) {
+            printf("Element %d found at position %d\n", key, pos);
+            return;
+        }
+        temp = temp->next;
+        pos++;
+    }
+    printf("Element %d not found in the list\n", key);
+}
+
 int main()
 {
   struct Node* head=NULL;
@@ -169,7 +183,8 @@ int main()
      printf("\n 5.Delete at end \n");
      printf("\n 6.Delete at position \n");
      printf("\n 7.Traverse list \n");
-     printf("\n 8.Exit\n");
+     printf("\n 8.Search data \n);
+     printf("\n 9.Exit\n");
      printf("\n Enter the choice: ");
      scanf("%d",&choice);
 
@@ -204,9 +219,13 @@ int main()
 		break;
 
 	case 7: traverselist(head);
-		break;
+		break:
 
-	case 8: exit(0);
+        case 8: printf("Enter element to search:"); 
+                scanf("%d", &data); 
+                search(head, data); 
+
+	case 9: exit(0);
 
 	default: printf("/n Invalid Choice");
      }
